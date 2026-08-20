@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase CRUD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Supabase Storage</h1>
+            <p>Upload, manage, and download your files seamlessly.</p>
+        </header>
+
+        <div class="upload-card glassmorphism">
+            <div id="dropzone" class="dropzone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="upload-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <p>Drag & drop your file here, or <span class="highlight">browse</span></p>
+                <input type="file" id="fileInput" hidden>
+            </div>
+            <div id="uploadStatus" class="status-msg"></div>
+        </div>
+
+        <div class="files-container glassmorphism">
+            <div class="files-header">
+                <h2>Your Files</h2>
+                <button id="refreshBtn" class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                </button>
+            </div>
+            <div class="table-wrapper">
+                <table id="filesTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Size (Bytes)</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="filesList">
+                        <!-- Rows injected via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content glassmorphism">
+            <h3>Rename File</h3>
+            <input type="text" id="newFileName" placeholder="Enter new filename">
+            <input type="hidden" id="editRecordId">
+            <div class="modal-actions">
+                <button id="cancelEditBtn" class="btn-secondary">Cancel</button>
+                <button id="saveEditBtn" class="btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
